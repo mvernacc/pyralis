@@ -1,0 +1,196 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University/School Laboratory Report
+% LaTeX Template
+% Version 3.0 (4/2/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Linux and Unix Users Group at Virginia Tech Wiki 
+% (https://vtluug.org/wiki/Example_LaTeX_chem_lab_report)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{siunitx} % Provides the \SI{}{} command for typesetting SI units
+\usepackage{graphicx} % Required for the inclusion of images
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+\renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
+\def\thesection{\Alph{section}} % make the secions be index by letters
+\usepackage[section]{placeins} % make sure figures are placed in the correct section
+\usepackage{pdfpages}
+%\usepackage{times} % Uncomment to use the Times New Roman font
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT INFORMATION
+%----------------------------------------------------------------------------------------
+\title{Testing Plan \\ Ethane-N2O Engine \\ MIT Rocket Team} % Title
+\author{Matt Vernacchia and Nicholas Voce} % Author name
+\date{ \today } % Date for the report
+
+%----------------------------------------------------------------------------------------
+% THE BODY OF THE REPORT
+%---------------------------------------------------------------------------------------
+
+\begin{document}
+\maketitle
+
+\section{Engine}
+\subsection{Cold Flow Test}
+Our thermodynamic model indicates that the thrust developed by the engine and optimal nozzle geometry depend only on chamber pressure and not on chamber temperature. Thus we can validate some aspect of our design by flowing a cold, pressurized gas through the engine. This test has the advantage of being easier, simpler, and safer than a combustion firing.
+\subsubsection{Objectives}
+Validate our choice of nozzle geometry. Verify that our thermodynamic model correctly predicts the thrust produced by the engine. Verify that our structural model correctly predicts the strain in the thrust chamber material and that the material does not fail under these loads.
+\subsubsection{Resources}
+\begin{enumerate}
+\item Compressed gas source delivering $\SI{0.6}{\kg\per\second}$ of gas at $\SI{6}{\mega\pascal}$.
+\item Engine assembly.
+\item Static firing stand.
+\item Blast chamber.
+\end{enumerate}
+\subsubsection{Measurements and Instrumentation}
+\begin{enumerate}
+\item Chamber pressure.
+\item Chamber temperature.
+\item Chamber wall strain (many locations).
+\item Thrust.
+\item Supply pressure.
+\item Supply mass flow rate.
+\end{enumerate}
+
+\subsection{Static Firing with Ground Tanks}
+\subsubsection{Objectives}
+Verify that our thermodynamic model correctly predicts the $I_{sp}$ and mass flow rate of the engine. Verify that our combustion model correctly predicts the chamber temperature. Validate our oxidizer/fuel mixing strategy. Validate our ignition system. Verify that our thermodynamic model correctly predicts the heating of the thrust chamber structure. Verify that our structural model correctly predicts the strain in the thrust chamber material at elevated temperatures.
+\subsubsection{Resources}
+\begin{enumerate}
+\item Compressed ethane source.
+\item Compressed nitrous oxide source.
+\item Engine assembly.
+\item Igniter.
+\item Static firing stand.
+\item Blast chamber.
+\end{enumerate}
+\subsubsection{Measurements and Instrumentation}
+\begin{enumerate}
+\item Chamber pressure.
+\item Chamber temperature.
+\item Chamber wall strain (many locations).
+\item Chamber wall temperature (many locations).
+\item Thrust.
+\item Ethane supply pressure, temperature, and mass flow rate.
+\item Nitrous oxide supply pressure, temperature, and mass flow rate.
+\item Exhaust plume visual camera.
+\item Exhaust plume thermal infrared camera.
+%TODO \item Exhaust gas chemical composition?? 
+\end{enumerate}
+
+\subsection{Static Firing with Flight Tanks}
+\subsubsection{Objectives}
+Verify that the plumbing between our flight tanks and engine delivers sufficient fuel and oxidizer flow to sustain combustion in the engine. Validate our tank filling and draining apparatus.
+\subsubsection{Resources}
+\begin{enumerate}
+\item Compressed ethane source.
+\item Compressed nitrous oxide source.
+\item Engine assembly.
+\item Tank assembly
+\item Igniter.
+\item Static firing stand.
+\item Blast chamber.
+\end{enumerate}
+\subsubsection{Measurements and Instrumentation}
+\begin{enumerate}
+\item Chamber pressure.
+\item Chamber temperature.
+\item Chamber wall strain (many locations).
+\item Chamber wall temperature (many locations).
+\item Thrust.
+\item Ethane engine entrance pressure and temperature.
+\item Nitrous oxide engine entrance pressure and temperature.
+\item Ethane tank exit temperature.
+\item Nitrous oxide tank exit temperature.
+\item Exhaust plume visual camera.
+\item Exhaust plume thermal infrared camera.
+\item Mass of nitrous oxide in tank. %TODO possible with tank design??
+\item Mass of ethane in tank. %TODO possible with tank design??
+\end{enumerate}
+
+\subsection{Static Firing with Avionics in-the-loop}
+In flight, the avionics algorithms will use sensor readings to estimate the rocket's current apogee, and will command the engine to shut down when the predicted apogee reaches the target apogee.
+In this test we will feed thrust readings from the engine into a dynamics model which provides simulated sensor inputs to the avionics system. 
+\subsubsection{Objectives}
+Validate the interaction of avionics system and propulsion system.
+\subsubsection{Resources}
+\begin{enumerate}
+\item Compressed ethane source.
+\item Compressed nitrous oxide source.
+\item Engine assembly.
+\item Tank assembly.
+\item Avionic assembly.
+\item Avionics algorithms.
+\item Igniter.
+\item Static firing stand.
+\item Blast chamber.
+\end{enumerate}
+\subsubsection{Measurements and Instrumentation}
+\begin{enumerate}
+\item Chamber pressure.
+\item Chamber temperature.
+\item Chamber wall strain (many locations).
+\item Chamber wall temperature (many locations).
+\item Thrust.
+\item Ethane engine entrance pressure and temperature.
+\item Nitrous oxide engine entrance pressure and temperature.
+\item Ethane tank exit temperature.
+\item Nitrous oxide tank exit temperature.
+\item Exhaust plume visual camera.
+\item Exhaust plume thermal infrared camera.
+\item Mass of nitrous oxide in tank. %TODO possible with tank design??
+\item Mass of ethane in tank. %TODO possible with tank design??
+\end{enumerate}
+
+
+\section{Tanks}
+\subsection{Hydraulic Pressure Static}
+We will test the strength of our tanks by filling the tanks with water and pressurizing the water to the desired test level. As pressurized water stores very little energy, a failure of a water-filled tank will be significantly less dangerous than a failure of a gas-filled tank.
+\subsubsection{Objectives}
+Verify that our structural model correctly predicts the strain in the tank wall material. Verify that our tank sealing technique does not produce leaks. Determine the pressure at which the tank ruptures.
+\subsubsection{Resources}
+\begin{enumerate}
+\item Tank assembly.
+\item Compressor capable of exerting $\SI{10}{\mega\pascal}$.
+\end{enumerate}
+\subsubsection{Measurements and Instrumentation}
+\begin{enumerate}
+\item Tank pressure.
+\item Tank wall strain (many locations).
+\end{enumerate}
+
+\subsection{Hydraulic Pressure Fatigue}
+\subsubsection{Objectives}
+Determine how many pressurization cycles a tank can withstand before failing.
+\subsubsection{Resources}
+\begin{enumerate}
+\item Tank assembly.
+\item Compressor capable of exerting $\SI{10}{\mega\pascal}$.
+\end{enumerate}
+\subsubsection{Measurements and Instrumentation}
+\begin{enumerate}
+\item Tank pressure.
+\item Tank wall strain (many locations).
+\end{enumerate}
+
+
+
+\begin{thebibliography}{9}
+
+\end{thebibliography}
+\end{document}

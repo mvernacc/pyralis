@@ -1,0 +1,106 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University/School Laboratory Report
+% LaTeX Template
+% Version 3.0 (4/2/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Linux and Unix Users Group at Virginia Tech Wiki 
+% (https://vtluug.org/wiki/Example_LaTeX_chem_lab_report)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{siunitx} % Provides the \SI{}{} command for typesetting SI units
+\usepackage{graphicx} % Required for the inclusion of images
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+\renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
+\def\thesection{\Alph{section}} % make the secions be index by letters
+\usepackage[section]{placeins} % make sure figures are placed in the correct section
+\usepackage{pdfpages}
+%\usepackage{times} % Uncomment to use the Times New Roman font
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT INFORMATION
+%----------------------------------------------------------------------------------------
+\title{Safety Plan \\ Ethane-N2O Engine \\ MIT Rocket Team} % Title
+\author{Matt Vernacchia and Nicholas Voce} % Author name
+\date{ \today } % Date for the report
+
+%----------------------------------------------------------------------------------------
+% THE BODY OF THE REPORT
+%---------------------------------------------------------------------------------------
+
+\begin{document}
+\maketitle
+\section{Machining Hazards}
+Only team members who have been trained by the MIT AeroAstro Gelb Lab staff will be allowed to use machine or power tools. Members will be encouraged to receive additional training from the MIT Hobby Shop.
+
+\section{Pressure Apparatus Explosion Hazard}
+\subsection{Commercial Pressure Vessels}
+We will use equipment and techniques approved by our gas supplier, Airgas, to connect commercial gas supply pressure vessels to our device.
+\subsection{Custom Pressure Vessels}
+We will custom-manufacture pressure vessels to store fuel and oxidizer in the rocket during launch and flight. To achieve the low mass needed for flight, these vessels must be designed with a yield strength safety margin of $1.5$ to $2.5$. To protect personnel from injury, our launch and test operations will be conducted under the assumption that, once pressurized, the flight tanks may fail at any time. Blast-proof barriers will be kept between people and the flight tanks at all times when the tanks are pressurized.
+
+\section{Propellant Toxicity}
+\subsection{Ethane Fuel}
+Ethane is not known to have toxic effects, it only presents a health hazard as a simple asphyxiant \cite{EthaneMSDS}.
+\subsection{Nitrous Oxide Oxidizer}
+Nitrous oxide presents a hazard as a simple asphyxiant and prolonged exposure may cause damage to the reproductive system, upper respiratory tract, and central nervous system \cite{N2OMSDS}. Nitrous oxide also acts as a dissociative anaesthetic when inhaled. Acute effects of overexposure include decreased mental performance, audiovisual ability, and manual dexterity, while long-term exposure can cause vitamin B-12 deficiency \cite{NIOSH}. These risks can be minimized by using adequate ventilation during processes which may leak nitrous oxide. Team members who work with nitrous oxide processes will be provided with vitamin B-12 supplements.
+
+\section{Exhaust Toxicity}
+Below is an estimate of the chemical constituents of the exhaust for burning ethane and nitrous oxide in a 1:4 ratio by mass at $\SI{5}{\mega\pascal}$ chamber pressure.
+These values were calculated using NASA's CEARUN combustion simulator.\\
+\begin{tabular}{ l | c | c | c | c }
+Species & Mole Frac in Exhaust & Molar Mass & Present in \SI{1}{\mole} Exhaust & Produced by \SI{1}{\kg} Prop.\\
+\hline
+CH4 & $0.012$ & \SI{16}{\gram\per\mole} & \SI{0.192}{\gram} & \SI{3.29}{\gram} \\
+CO  & $0.158$ & \SI{28}{\gram\per\mole} & \SI{4.424}{\gram} & \SI{75.8}{\gram} \\
+CO2 & $0.074$ & \SI{44}{\gram\per\mole} & \SI{3.256}{\gram} & \SI{55.8}{\gram} \\
+HCN & $\num{2.3e-7}$& \SI{27}{\gram\per\mole} & \SI{6.21d-6}{\gram} & \SI{1.1d-4}{\gram} \\
+H2  & $0.317$ & \SI{2}{\gram\per\mole}  & \SI{0.634}{\gram} & \SI{10.9}{\gram} \\
+H2O & $0.056$ & \SI{18}{\gram\per\mole} & \SI{1.008}{\gram} & \SI{17.3}{\gram} \\
+N2  & $0.362$ & \SI{28}{\gram\per\mole} & \SI{10.136}{\gram} & \SI{173.8}{\gram} \\
+C(gr)&$0.021$ & \SI{12}{\gram\per\mole} & \SI{0.252}{\gram} & \SI{4.32}{\gram} \\
+\end{tabular}
+\\
+Of these by-products, hydrogen cyanide (HCN) and carbon monoxide (CO) are toxic to humans.\\
+\subsection{Hydrogen Cyanide}
+According to \cite{HCNtox}:\\
+`` Exposure to low concentrations may result in a range of non-specific features including
+headache, dizziness, throat discomfort, chest tightness, skin itching and eye irritation and 
+hyperventilation. With more substantial exposures, features may include severe 
+dizziness (near syncope).\\
+Exposure to a massive concentration of hydrogen cyanide gas may render an individual 
+unconscious within seconds [10, 11] and may lead to coma and death within minutes."\\
+The $LD_{50}$  of HCN in rats is \SI{3}{\milli\gram\per\kg} by oral ingestion and 
+$\SI{158}{\milli\gram\per\cubic\metre}$ for $\SI{60}{\minute}$ of inhalation exposure \cite{HCNtox}.
+The amount of HCN the combustion process will produce, $\SI{0.11}{\milli\gram}$ per kilogram of propellant,
+is well below these levels. The smoke from one cigarette contains the same amount of HCN \cite{HCNtox}.
+Therefore it is no expected that HCN will be a significant source of exhaust toxicity.\\
+\subsection{Carbon Monoxide}
+Carbon monoxide (CO) is toxic by inhalation, and damages the heart, lungs, blood, cardiovascular system and nervous system \cite{COtox}.
+Combustion of $\SI{1}{\kg}$ is expected to produce $\SI{75.8}{grams}$ of CO. 
+The OSHA ceiling exposure limit for CO is $\SI{200}{\milli\gram\per\cubic\metre}$ \cite{COtox}. 
+Combusting several kilograms of propellant within a blast chamber without ventilation would produce concentrations exceeding this level. 
+Blast chamber tests of the combustion process must be adequately ventilated to prevent CO poisoning.
+
+\begin{thebibliography}{9}
+	\bibitem{EthaneMSDS} Ethane Material Safety Data Sheet. \emph{Airgas.} http://www.airgas.com/documents/pdf/001024.pdf.
+	\bibitem{N2OMSDS} Nitrous Oxide Material Safety Data Sheet. \emph{Airgas.} http://www.airgas.com/documents/pdf/001042.pdf.
+	\bibitem{NIOSH} Criteria for a Recommended Standard: Occupational Exposure to Waste Anesthetic Gases and Vapors. \emph{Centers for Disease Control and Prevention.} http://www.cdc.gov/niosh/docs/1970/77-140.html.
+	\bibitem{HCNtox} Hydrogen Cyanide Toxicological Overview. \emph{UK Health Protection Agency.} http://www.hpa.org.uk/webc/HPAwebFile/HPAweb\_C/1202487078453.
+	\bibitem{COtox} Carbon Monoxide Material Safety Data Sheet. \emph{Airgas.} http://www.airgas.com/documents/pdf/001014.pdf.
+\end{thebibliography}
+\end{document}
