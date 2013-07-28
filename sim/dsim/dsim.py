@@ -12,41 +12,45 @@ import numpy as np
 class State:
 	#### Rocket State ####
 	# Altitude. Up is positive. [meter]
-	y
+	y = 0
 	# Vertical velocity [meter sec^-1]
-	dy
+	dy = 0
 	# Vertical acceleration [meter sec^-2]
-	ddy
+	ddy = 0
 	# Mach number [-]
-	mach
+	mach = 0
 
 	#### Simulation State ####
 	# Simulation time [sec]
-	t
+	t = 0
 
 	#### Atmosphere State ####
 	# Atmospheric pressure [Pa]
-	Pa
+	Pa = 0
 	# Atmospheric temperature [K]
-	Ta
+	Ta = 0
 	# Speed of sound [meter sec^-1]
-	a	
+	a = 0
+	def __init__(self):
+		pass
 
 class Vehicle:
-	# Mass (non-propulsion system) [kg]
-	m
+	# Mass [kg]
+	m = 0
 	# Coefficient of drag [-]
-	Cd
+	Cd = 0
 	# Upwards-facing area [meter^2]
-	A
+	A = 0
+	def __init__(self):
+		pass
 
 class DSim:
 	# simulation state
-	State state
+	state = State()
 	# Vehicle parameters
-	Vehicle vehicle
+	vehicle = Vehicle()
 	# Applied force. Up is positive. [N]
-	force
+	force = 0
 	# Acceleration due to gravity [meter sec^-2]
 	g = -9.81
 	# Ratio of specific heats for air [-]
@@ -54,7 +58,10 @@ class DSim:
 	# Gas constant for air [J kg^-1 K^-1]
 	R_air = 287.058
 
-	def atmo( y ):
+	def __int__(self):
+		pass
+
+	def atmo(self, y ):
 		''' Atmosphere state as a function of altitude.
 		@param y Altitude [meter].
 		@returns pressure [Pa], temperature [K], speed of sound [meter sec^-1].
@@ -70,33 +77,37 @@ class DSim:
 		Ta = Tground + lr*y
 
 		# Speed of sound
-		a = ( DSim.gamma_air * DSim.R_air * Ta )
+		a = ( self.gamma_air * self.R_air * Ta )**0.5
 
 		return Pa, Ta, a
 
-	def update( time_new ):
+	def update(self, time_new ):
 		''' Update the simulation state to a new time.
 		@param time_new The new time [sec]. time_new in sequential calls to update must be monotonically increasing.
 		For best results the difference between time_new in sequential calls should be small.
 		'''
 		# update time
-		dt = time_new - DSim.state.t
+		dt = time_new - self.state.t
 		assert( dt > 0 )
-		DSim.state.t = time_new
+		self.state.t = time_new
 
 		# Get atmospheric properties
-		DSim.state.Pa, DSim.state.Ta, DSim.state.a = atmo( DSim.state.y )
+		self.state.Pa, self.state.Ta, self.state.a = self.atmo( self.state.y )
 
 		# Find the drag force on the vehicle
-		rho_air = DSim.state.Pa / ( DSim.R_air * DSim.state.Ta ) 
-		f_drag = 0.5 * rho_air * (DSim.state.dy**2) * DSim.vehicle.A * DSim.vehicle.Cd * -np.sign(DSim.state.dy) 
+		rho_air = self. state.Pa / ( self.R_air * self. state.Ta ) 
+		f_drag = 0.5 * rho_air * (self. state.dy**2) * self.vehicle.A * self.vehicle.Cd * -np.sign(self. state.dy) 
 
 		# Find the net force on the vehicle
-		f_net = force + f_drag + DSim.g*DSim.vehicle.m
+		f_net = self.force + f_drag + self.g*self.vehicle.m
 
 		# Find the acceleration
-		DSim.ddy = f_net / DSim.vehicle.m
+		self. state.ddy = f_net / self.vehicle.m
 
 		# Find the velocity and position
-		DSim.dy += DSim.ddy / dt
-		DSim.y  += DSim.dy  / dt
+		self. state.dy += self. state.ddy * dt
+		self. state.y  += self. state.dy  * dt
+
+		self.state.mach = np.absolute(self.state.dy) / self.state.a
+		if self.state.mach > 1:
+			print "Warning: supersonic conditions at time %.3f"%(self.state.t)
