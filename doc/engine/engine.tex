@@ -44,23 +44,24 @@
 %---------------------------------------------------------------------------------------
 
 \begin{document}
+\maketitle
 \section{Propellant Selection}
 We require propellants which:
 \begin{enumerate}
 \item Are storable at room temperature (non-cryogenic).
 \item Are able to be liquefied at room temperature ($\SI{295}{\kelvin}$) so as to have compact sized tanks.
-\item Have a high vapour pressure at room temperature so that the propellants will self-pressurize the combustion chamber. This enables us to avoid using a turbopump or inert gas system to pressurize the combustion chamber, greatly simplifying the engine design.
+\item Have a high vapour pressure at room temperature so that the propellants will self-pressurize the combustion chamber. This eliminates the need for a turbopump or inert gas system to pressurize the combustion chamber, greatly simplifying the engine design.
 \item Are non-toxic or low-toxicity.
 \item Are low-cost and readily available.
 \end{enumerate}
-Nitrous oxide \ce{N2O} is the oxidizer most widely used in hobby rocketry. \ce{N20} and hydrogen peroxide are the only widely used oxidizer which can be liquid at room temperature, and \ce{N2O} is the less toxic and more stable of the two. \ce{N20} also presents a vapour pressure of $\SI{5.29}{\mega\pascal}$ at $\SI{295}{\kelvin}$, which is a sufficient combustion chamber pressure. Thus \ce{N2O} will be our oxidizer.\\
+Nitrous oxide (\ce{N2O}) is the oxidizer most widely used in hobby rocketry. \ce{N2O} and hydrogen peroxide are the only widely used oxidizer which can be liquid at room temperature, and \ce{N2O} is the less toxic and more stable of the two. \ce{N2O} also presents a vapour pressure of $\SI{5.29}{\mega\pascal}$ at $\SI{295}{\kelvin}$, which is a sufficient combustion chamber pressure. Thus \ce{N2O} will be our oxidizer.\\
 \begin{figure}[h!]
 \centering
 \includegraphics[width = 0.8\textwidth]{n2o_vap.png}
 \caption{Vapour pressure curve of nitrous oxide} 
 \label{n2o_vap}
 \end{figure}
-Alkane hydrocarbon fuels provide a high energy density and are comparatively cheap. All alkanes but methane (\ce{CH4}) can be liquefied at room temperature. Of these, ethane \ce{C2H6} presents the highest vapour pressure of $\SI{4.40}{\mega\pascal}$. Ethane has a similar vapour pressure curve and critical point to \ce{N2O}, making a convenient pairing. Therefore we will use ethane as our fuel.
+Alkane hydrocarbon fuels provide a high energy density and are comparatively cheap. All alkanes but methane (\ce{CH4}) can be liquefied at room temperature. Of these, ethane (\ce{C2H6}) presents the highest vapour pressure of $\SI{4.40}{\mega\pascal}$. Ethane has a similar vapour pressure curve and critical point to \ce{N2O}, making a convenient pairing. Therefore we will use ethane as our fuel.
 \begin{figure}[h!]
 \centering
 \includegraphics[width = 0.8\textwidth]{c2h6_vap.png}
@@ -76,7 +77,18 @@ Our engine will use an aerospike, an altitude-compensating nozzle featuring an a
 \caption{A small aerospike nozzle engine made by NASA Dryden} 
 \label{dryden_aerospike}
 \end{figure}
-C.C. Lee presents a numerical algorithm for designing the contour of an aerospike nozzle and predicting the performance of the associated engine. Using his algorithm, we predict a thrust of approximately $\SI{700}{\newton}$ and a specific impulse of $\SI{390}{sec}$ for a $\SI{30}{\milli\metre}$ diameter nozzle (Fig \ref{spike_contour}).
+C.C. Lee \cite{CCLee} presents a numerical algorithm for designing the contour of an aerospike nozzle and predicting the performance of the associated engine. The approach of the algorithm is:
+\begin{enumerate}
+\item find the Mach number at the exit plane of the engine (the tip of the spike). This is found from the expansion ratio. CC Lee uses a numerical technique to do this, we use an explicit inversion of Stodola's Area-Mach equation.
+\item Find the pressure, temperature, and velocity of the fluid at the throat of the nozzle. Use these to find the mass flow rate through the throat.
+\item For a range of Mach numbers from 1 to the exit Mach number:
+\subitem The flow expands out of the nozzle in a conical Prandtl-Meyer expansion fan. At each Mach number we find the angle of the revolved expansion fan when the flow reaches that Mach number. The area of this step in the expansion fan is a function of the radius of plug contour where this step in the fan intersects the plug contour. 
+\subitem Find the velocity and density of the fluid at this expansion step
+\subitem The mass flow through each step in the expansion fan must equal the mass flow through the throat. Use this fact to fix the area that this step in the revolved expansion fan must have. 
+\subitem Use the area and the angle of the fan to fix what the radius of the plug contour must be at a particular axial distance down from the throat.
+\end{enumerate} 
+For each Mach number examined, the algorithm generates a $(radius, axial distance)$ pair defining a point in cylindrical coordinates through which the plug contour must past. If the algorithm examines enough Mach numbers, the points will trace out a smooth contour line for the plug.\\
+Using his algorithm, we predict a thrust of approximately $\SI{700}{\newton}$ and a specific impulse of $\SI{390}{sec}$ for a $\SI{30}{\milli\metre}$ diameter nozzle (Fig \ref{spike_contour}).
 \begin{figure}[h!]
 \centering
 \includegraphics[width = 0.8\textwidth]{spike_contour.png}
@@ -85,7 +97,7 @@ C.C. Lee presents a numerical algorithm for designing the contour of an aerospik
 \end{figure}
 
 \section{Combustion Chamber}
-The combustion chamber is to be made from graphite (for surfaces which will be in contact with combustion gasses) and steel (for the pressure vessel). A cavity of pressurized fuel gas insulates steel pressure vessel from heat of combustion chamber. As the pressure in this cavity is near the pressure in the combustion chamber, mechanical stress on the high-temperature graphite combustion chamber liner is minimized (Fig \ref{flow_concept} note 1). Injection orifices are positioned around the graphite combustion chamber liner so that fuel and oxidizer jets impinge, mixing the fluids for combustion (Fig \ref{flow_concept} note 2).
+The combustion chamber is to be made from graphite (for surfaces which will be in contact with combustion gasses) and steel (for the pressure vessel). A cavity of pressurized fuel gas insulates the steel pressure vessel from the heat of the combustion chamber. As the pressure in this cavity is near the pressure in the combustion chamber, mechanical stress on the high-temperature graphite combustion chamber liner is minimized (Fig \ref{flow_concept} note 1). Injection orifices are positioned around the graphite combustion chamber liner so that fuel and oxidizer jets impinge, mixing the fluids for combustion (Fig \ref{flow_concept} note 2).
 \begin{figure}[h!]
 \centering
 \includegraphics[width = 0.8\textwidth]{flow_concept.png}
@@ -109,6 +121,7 @@ This thermal model shows that the fuel gas cavity successfully insulates the out
 \end{figure}
 \begin{thebibliography}{9}
 	\bibitem{CEARUN} CEARUN. \emph{NASA.} http://cearun.grc.nasa.gov/.
+	\bibitem{Stodola} J. Majdalani and B. A. Maickie. Explicit Inversion of Stodola's Area-Mach Equation. \emph{University of Tennessee Space Institute.} http://maji.utsi.edu/publications/pdf/HT02\_11.pdf
 	\bibitem{CCLee} C.C Lee. FORTRAN Programs for Plug Nozzle Design. \emph{NASA Marshal Space Flight Center.} 1963. http://ia700303.us.archive.org/24/items/nasa\_techdoc\_19630012259/19630012259.pdf.
 	\bibitem{316} 316 Stainless Steel. \emph{AK Steel.} http://www.aksteel.com/pdf/markets\_products/stainless/austenitic/316\_316L\_Data\_Bulletin.pdf.
 \end{thebibliography}
