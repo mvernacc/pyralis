@@ -36,8 +36,9 @@ def get_Mach( er, y ):
 # Combustion chamber output stagnation pressure [Pa]
 Pc = 4.4e6
 # Combustion chamber output stagnation temperature [K]
-# 3200K = estimate of stoich ethane/N2O
-Tc = 2000.0
+# 3200 K = estimate of stoich ethane/N2O
+# 1727 K = CEARUN ethane:N20 = 3:1 by mass.
+Tc = 1727.0
 
 #### Operating Conditions ####
 # Ambient atmospheric pressure [Pa]
@@ -63,7 +64,6 @@ R =  R_mol / molar_m * 1000
 
 #### Compute the Exit Mach Number ####
 Me = get_Mach( er, y )
-print Me
 # use this to find the exit (tip-plane) pressure  (assumung isetropic expansion)
 Pe = Pc * (1 + (y-1)/2*Me**2)**(-y/(y-1))
 
@@ -102,6 +102,8 @@ mu = np.zeros((N,))
 nu = np.zeros((N,))
 # the pressure at point x [Pa]
 P = np.zeros((N,))
+# the temperature at point x [K]
+T = np.zeros((N,))
 # the cumulative Isp up to point x [sec]
 Isp = np.zeros((N,))
 # the Isp due to momentum flux and pressure at the throat [sec]
@@ -122,20 +124,37 @@ for x in xrange(N):
         Isp[x] = Isp[x-1] + ( vt/y*((y+1)/2)**(y/(y-1)) * \
             er/2 * ( (P[x-1]-Pa)/Pt + (P[x]-Pa)/Pt ) * \
             (RxRe[x-1]**2 - RxRe[x]**2) ) / g
+    #find the temperature
+    T[x] = Tc / (1+ (y-1)/2 * M[x])
 
-plt.subplot(3,1,1)
+plt.subplot(2,3,1)
 plt.plot( X, RxRe )
 plt.ylabel('Rx / Re')
+plt.grid(True)
 
-plt.subplot(3,1,2)
-plt.plot( X, P, hold=True )
-plt.plot( X, np.ones((N,))*Pa, 'r' )
-plt.ylabel('Pressure')
-
-plt.subplot(3,1,3)
-plt.plot( X, Isp )
-plt.ylabel('Cumulative I_{sp}')
+plt.subplot(2,3,4)
+plt.plot( X, M )
+plt.ylabel( 'Mach Number')
 plt.xlabel('Xx / Re')
+plt.grid(True)
+
+plt.subplot(2,3,2)
+plt.plot( X, P/1.0e6, hold=True )
+plt.plot( X, np.ones((N,))*Pa/1.0e6, 'r' )
+plt.ylabel('Pressure [MPa]')
+plt.grid(True)
+
+plt.subplot(2,3,5)
+plt.plot( X, T )
+plt.ylabel('Temperature [K]')
+plt.xlabel('Xx / Re')
+plt.grid(True)
+
+plt.subplot(2,3,3)
+plt.plot( X, Isp )
+plt.ylabel(r'Cumulative $I_{sp}$')
+plt.xlabel('Xx / Re')
+plt.grid(True)
 
 #### Introduce the dimensional parameter Re to find the thrust
 # The radius of the shroud lip [meter]
@@ -160,11 +179,13 @@ print '\tExpansion ratio,     er = %.2f'%(er)
 print 'Chamber Conditions:'
 print '\tChmaber pressure,    Pc = %.3f MPa'%(Pc/1.0e6)
 print '\tChamber temperature, Tc = %.0f K'%(Tc)
+print '\tExhaust Avg Molar Mass  = %.1f g mol^-1'%(molar_m)
 print 'Engine Performance:'
 print '\tMass flow rate,   m_dot = %.4f kg sec^-1'%(m_dot)
 print '\tThrust force,         F = %.1f N'%(F)
 print '\tSpecific impulse,   Isp = %.1f sec'%(Isp[N-1])
 print '\tExit pressure,       Pe = %.2f Pa'%(Pe)
+print '\tExit Mach number,    Me = %.2f'%(Me)
 
 #### write the contour to a file
 f = open('nozzle_plug_curve.txt', 'w')
