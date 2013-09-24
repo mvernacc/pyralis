@@ -127,6 +127,7 @@ for x in xrange(N):
     #find the temperature
     T[x] = Tc / (1+ (y-1)/2 * M[x])
 
+plt.suptitle('Simulated Nozzle Conditions vs Axial Distance from Throat Normalized by Exit Radius')
 plt.subplot(2,3,1)
 plt.plot( X, RxRe )
 plt.ylabel('Rx / Re')
@@ -156,6 +157,12 @@ plt.ylabel(r'Cumulative $I_{sp}$')
 plt.xlabel('Xx / Re')
 plt.grid(True)
 
+plt.subplot(2,3,6)
+plt.text(0.05,0.8, 'Chamber Conditions:')
+plt.text(0.1,0.7, r'$P_c =$ %.2f MPa'%(Pc/1e6))
+plt.text(0.1,0.6, r'$T_c =$ %.0f K'%(Tc))
+plt.text(0.1,0.5, r'$M_{molar} =$ %.1f g mol^-1'%(molar_m))
+#plt.axes([0,10,0,10])
 #### Introduce the dimensional parameter Re to find the thrust
 # The radius of the shroud lip [meter]
 Re = 0.015
