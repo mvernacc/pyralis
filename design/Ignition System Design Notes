@@ -1,0 +1,53 @@
+PYRALIS IGNITION SYSTEM
+
+Key sources of information:
+
+"Critical conditions for nitrous oxide ignition"
+A. A. Borisov, K. Ya. Troshin, Yu. S. Biryulin
+http://link.springer.com/article/10.1134%2FS1990793109040150#page-1
+
+NITROUS OXIDE / HYDROCARBON FUEL ADVANCED CHEMICAL PROPULSION: DARPA CONTRACT OVERVIEW* 
+Roger Herdy, Qualis Corporation 
+http://tfaws.nasa.gov/TFAWS06/Proceedings/Aerothermal-Propulsion/Papers/TFAWS06-1026_Paper_Herdy.pdf
+
+Flammability, Ignition Energy and Flame Speed
+U.J. Pfahl, M.C. Ross and J.E. Shepherd
+K.O. Pasamehmetoglu and C. Unal
+http://www2.galcit.caltech.edu/EDL/publications/reprints/flimits.pdf
+***This paper contains useful values for the ignition energy of nitrous-methane mixtures, which we can expect to be similar (at least within an order of magnitude) to the values for nitrous-ethane mixtures. -James Logan***
+
+ION12V 12VDC 5W Ion Power Supply Data Sheet
+http://www.imagesco.com/science/high-voltage/hvps3.pdf
+***Data sheet for the 3000VDC power supply that is a prospective sparker for the ignition system.***
+
+Spellman High Voltage Electronics
+http://www.spellmanhv.com/
+
+EMCO High Voltage Corporation
+http://www.emcohighvoltage.com/
+
+
+Key design points, issues, and related values:
+
+Enthalpy of formation of nitrous oxide N2O: 82.5 kJ/mol
+Enthalpy of formation of ethane C2H6: -83.7 kJ/mol
+
+Explosive mixture range of ethane in air (given as percent ethane by volume): 3%-12.4%
+
+Nitrous Oxide General Information
+-Decomposes at extremely high temperatures; non-deflagrating
+-->Purely thermal ignition systems have been shown to be ineffective
+---->Investigated possibility of using oxygen to lower ignition energy; the authors of "Flammability, Ignition Energy and Flame Speed" attempted this method and found that the ignition energy of a mixture of nitrous oxide and methane was insensitive to additional oxygen.
+----->Hypergolic options exist. They are unpleasant and best if avoided. They also require a large amount of additional weight (pressure tanks, plumbing, control...) and would likely preclude restart capability without more, heavier, and more complex plumbing.
+------>Spark ignition is the preferred method.
+
+Nitrous Oxide Ignition
+-The authors of "Flammability, Ignition Energy and Flame Speed" found that the flammability limits of the nitrous oxide-methane mixture at STP were unaffected by increasing the ignition energy beyond 1J.
+-->Order-of-magnitude similarity assumption => the necessary ignition energy of the nitrous oxide-ethane mixture should be fairly constant beyond 10J.
+
+If an ignition energy of 10J is not available, it may be possible to achieve a similar effect by applying a very high voltage at a low current as well as a lower voltage at a high current, with the goal of decomposing some of the reactants electrically in addition to supplying a reasonable ignition energy.
+Relevance: Camera flash (potential ignition method) provides an ignition energy of 6.1J via a capacitor with C = 120microFarad, V = 320v
+
+
+
+
