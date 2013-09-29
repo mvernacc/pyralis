@@ -73,7 +73,7 @@ CONS
 -Long charge time --> less likely to coincide in time with a local propellant mixture ratio conducive to ignition --> more delay
 -Need more control equipment; probably need a physical switch to connect the capacitor bank to the spark plug at the appropriate moment. 
 
-3: Combinations - Flyback or voltage pump to initiate ion channel across spark gap, decreasing resistance enough to allow a lower-voltage capacitor to discharge.
+3: Combinations - Flyback or voltage pump to initiate arc across spark gap, decreasing resistance enough to allow a lower-voltage capacitor to discharge.
 PROS
 ???
 CONS
