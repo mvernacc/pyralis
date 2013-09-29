@@ -1,5 +1,7 @@
 PYRALIS IGNITION SYSTEM
 
+TL;DR? The ignition system will be spark-type by necessity, and the combustion chamber pressure should be close to atmospheric during ignition in order to ease ignition and prevent detonation. The spark itself will most likely be produced by a capacitor bank charged by a small high-voltage power supply, although other options exist and will be investigated.
+
 Key sources of information:
 
 "Critical conditions for nitrous oxide ignition"
@@ -75,7 +77,7 @@ CONS
 
 3: Combinations - Flyback or voltage pump to initiate arc across spark gap, decreasing resistance enough to allow a lower-voltage capacitor to discharge.
 PROS
-???
+Might have improved reliability over the others
 CONS
 Weird idea, may not be a workable concept
 
