@@ -34,6 +34,8 @@ Enthalpy of formation of ethane C2H6: -83.7 kJ/mol
 
 Explosive mixture range of ethane in air (given as percent ethane by volume): 3%-12.4%
 
+Explosive mixture range of nitrous oxide in air: None
+
 Nitrous Oxide General Information
 -Decomposes at extremely high temperatures; non-deflagrating
 -->Purely thermal ignition systems have been shown to be ineffective
@@ -46,8 +48,43 @@ Nitrous Oxide Ignition
 -->Order-of-magnitude similarity assumption => the necessary ignition energy of the nitrous oxide-ethane mixture should be fairly constant beyond 10J.
 
 If an ignition energy of 10J is not available, it may be possible to achieve a similar effect by applying a very high voltage at a low current as well as a lower voltage at a high current, with the goal of decomposing some of the reactants electrically in addition to supplying a reasonable ignition energy.
-Relevance: Camera flash (potential ignition method) provides an ignition energy of 6.1J via a capacitor with C = 120microFarad, V = 320v
+Relevance: Camera flash (potential ignition method) provides an ignition energy of 6.1J via a capacitor with C = 120microFarad, V = 320v. More likely, it will prove effective to use two or more of these or similar capacitors in parallel as a separate capacitor bank module. This would increase charging times (currently ~4sec, soon to be timed more precisely) but, if the ignition energy were pushed high enough, would likely make the issue of local mixture ratio irrelevant by supplying sufficient energy to a larger volume of gas.
 
+
+
+Prospective Spark Ignition Methods
+
+1: Inductive - Flyback Transformer
+PROS
+-High frequency spark --> more likely to coincide in time with a local propellant mixture ratio conducive to ignition --> fewer delays
+-Immediate response to control input --> fewer delays
+-Easily adjustable voltage (wind/unwind coils, change input voltage)
+CONS
+-Potentially heavy, as inductors generally are.
+-Slow application of energy; no convenient measure for calculating equivalent ignition energy.
+
+2: Capacitive - Voltage-pump Charged Capacitor Bank
+PROS
+-Easily measurable ignition energy.
+-Easily adjustable voltage and energy.
+-Lighter than a flyback - entire system could easily stay < 100g.
+-Large ignition energy may render the issue of local mixture ratio irrelevent by supplying adequate ignition energy to a large volume of gas (and therefore a large sample of mixture ratios) --> fewer delays
+CONS
+-Long charge time --> less likely to coincide in time with a local propellant mixture ratio conducive to ignition --> more delay
+-Need more control equipment; probably need a physical switch to connect the capacitor bank to the spark plug at the appropriate moment. 
+
+3: Combinations - Flyback or voltage pump to initiate ion channel across spark gap, decreasing resistance enough to allow a lower-voltage capacitor to discharge.
+PROS
+???
+CONS
+Weird idea, may not be a workable concept
+
+4. Capacitive Type II - Voltage Pump
+PROS
+-All the pros of the Flyback Transformer
+-Extremely light (ordered a <100g solution)
+CONS
+-Same as Flyback transformer, except the weight
 
 
 
