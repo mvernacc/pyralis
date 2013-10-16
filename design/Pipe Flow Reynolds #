@@ -3,6 +3,6 @@
 function [ Re ] = Re( mu, mdot, d )
 %Reynolds number calculator for pipe flow.
 %   Form: Re(dynamic viscosity, mass flow rate, pipe diameter)
-Re = (4 * mdot)/(pi * mu * d);
+Re = (4 * mdot)./(pi * mu * d);
 
 end
