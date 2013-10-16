@@ -1,8 +1,41 @@
-% Matlab code used to produce pipe flow reynolds numbers.
-
 function [ Re ] = Re( mu, mdot, d )
 %Reynolds number calculator for pipe flow.
-%   Form: Re(dynamic viscosity, mass flow rate, pipe diameter)
-Re = (4 * mdot)./(pi * mu * d);
+%   Form: Re(dynamic viscosity, mass flow rate, pipe inside diameter)
+
+%   For your graphing convenience, any of the inputs can be given as an
+%   array.
+
+Re = (4 .* mdot)./(pi .* mu .* d);
 
 end
+
+%THIS PART BELONGS IN A DIFFERENT FILE; INCLUDED HERE FOR VIEWING
+%CONVENIENCE
+
+%All gas properties taken from Air Liquide Gas Encyclopedia
+
+
+d_vec = 0.01:0.001:0.1; %Array of pipe diameters from 1cm to 10cm
+mu_air = 1.6950 * 10^-6; %Dynamic viscosity of air
+mu_nitrous = 1.3600*10^-5; %Dynamic viscosity of nitrous oxide
+mu_ethane = 8.5500*10^-6; %Dynamic viscosity of ethane
+mdot_air = 0.6; %Mass flow of air during cold flow test
+mdot_hotflow_total = 0.22; %Total mass flow including both propellants during hot flow test
+r_prop = 4; %Ratio of ethane mass flow to nitrous oxide mass flow
+mdot_nitrous = mdot_hotflow_total/(r_prop + 1); %Nitrous oxide mass flow
+mdot_ethane = mdot_hotflow_total*r_prop/(r_prop+1); %Ethane mass flow
+
+plot(d_vec, Re(mu_air, mdot_air, d_vec));
+xlabel('Pipe Diameter [m]');
+ylabel('Reynolds Number of Air Flow');
+title('Reynolds Number vs. Pipe Diameter, Cold Flow Test');
+figure
+plot(d_vec, Re(mu_ethane, mdot_ethane, d_vec));
+xlabel('Pipe Diameter [m]');
+ylabel('Reynolds Number of Ethane Flow');
+title('Reynolds Number vs. Pipe Diameter, Ethane during Hot Flow Test');
+figure
+plot(d_vec, Re(mu_nitrous, mdot_nitrous, d_vec));
+xlabel('Pipe Diameter [m]');
+ylabel('Reynolds Number of Nitrous Oxide Flow');
+title('Reynolds Number vs. Pipe Diameter, Nitrous Oxide during Hot Flow Test');
