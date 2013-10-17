@@ -89,4 +89,16 @@ CONS
 -Same as Flyback transformer, except the weight
 
 
+10/2/2013 FIRST TEST OF IGNITION SYSTEM (with butane/air)
 
+6.1J spark via 320V capacitor (charged by a voltage pump) succeeded consistently in igniting a mixture of butane and air in an unsteady mixing environment at STP.
+
+Voltage pump operating at 20kHz, 8kV DC, with 0.23A input failed to ignite the same mixture under the same conditions, despite evidence of ionization of the butane (visible change in arc coloration)
+
+Results as expected, given that the discharge of the capacitor (but not the vp) falls within the predicted range of necessary ignition energy.
+
+Ideas for further experimentation: 
+
+We may use the 5-8kV voltage pump to charge a larger capacitor, then control the discharge of that cap such that we decrease the operating frequency of the device while pushing the ignition energy it supplies into the predicted range of 1J - 10J.
+
+The pump-charged capacitor may be successful in a nitrous/ethane environment as it stands, but we will likely add a second capacitor of the same type in parallel with the first, halving the operating frequency (currently about 0.2Hz) while pushing its discharge energy above the maximum expected necessary value of 10J. Doing this may cause us to go through spark plugs faster; in its current configuration, the device vaporizes a small amount of copper from the contacts during each discharge. This being the case, fouling may  be less of an issue than previously thought: if each discharge is accompanied by the expulsion of the current electrode surface, the device may be self-cleaning, albeit ablative. Spark plugs are cheap, in any case, and also built to withstand similar treatment.
