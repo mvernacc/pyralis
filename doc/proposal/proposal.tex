@@ -24,11 +24,11 @@
 \usepackage{amssymb}
 \usepackage{siunitx} % Provides the \SI{}{} command for typesetting SI units
 \usepackage{graphicx} % Required for the inclusion of images
-\setlength\parindent{0pt} % Removes all indentation from paragraphs
 \renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section* 6)
 \def\thesection{\Alph{section}} % make the secions be index by letters
 \usepackage[section]{placeins} % make sure figures are placed in the correct section*
 \usepackage{pdfpages}
+\usepackage{float}
 \usepackage[version=3]{mhchem} % chemistry typesetting
 %\usepackage{times} % Uncomment to use the Times New Roman font
 
@@ -48,27 +48,43 @@
 \maketitle
 \section*{Summary}
 The MIT Rocket Team proposes to design, build, and test a liquid bi-propellant rocket engine with an aerospike nozzle (the Pyralis engine).
-The production of an engine will require more rigorous engineering work and provide better educational opportunities for the team's members than our recent projects. We plan to culminate this academic year with a successful static firing of the engine. Next year, we will continue engine testing in preparation to fly the engine in a rocket vehicle at the Intercollegiate Rocket Engineering Competition (IREC) hosted by the Experimental Sounding Rocket Association in late June 2015. Activities for the 2013-2014 year are expected to cost $9,000$ to $10,000$ USD.
+The production of an engine will require more rigorous engineering work and provide better educational opportunities for the team's members than our recent projects. We plan to culminate this academic year with a successful static firing of the engine. Next year, we will continue engine testing in preparation to fly the engine in a rocket vehicle at the Intercollegiate Rocket Engineering Competition (IREC) hosted by the Experimental Sounding Rocket Association in late June 2015. Activities for the 2013-2014 year are expected to cost $10,000$ to $11,000$ USD.
 \section*{Educational Goals}
 The production of an engine will provide team members with a hands-on application of a wide variety of disciplines vital to an aerospace engineering education. Applied skills will include structural analysis of engine and propellant tank pressure vessels, heat transfer, combustion thermodynamics, analysis of subsonic fluid flow through pipes and supersonic fluid flow through nozzles, engine performance predictions, launch vehicle performance predictions, sensing, controls, and experiment design.\\
 
-The first seven weeks of the school year will be devoted to educating new team members in the basics of rocket design and theory. Each new member will build a rocket vehicle from a provided design. The rocket will be driven by an H-impulse class commercial solid motor, recovered by a pyrotechnically deployed parachute, and carry a small camera as payload. The rockets will be used for a National Association of Rocketry Level 1 certification. Each of the first six weeks will feature a lesson conducted by senior team members, followed by new members immediately applying the lesson material to the construction of their Level 1 rockets. Lesson topics will be:
+The first seven weeks of the school year are devoted to educating new team members in the basics of rocket design and theory. Each new memberis building a rocket vehicle from a provided design. The rocket will be driven by an H-impulse class commercial solid motor, recovered by a pyrotechnically deployed parachute, and carry a small camera as payload. The rockets will be used for a National Association of Rocketry Level 1 certification. Each of the first six weeks features a lesson conducted by senior team members, followed by new members immediately applying the lesson material to the construction of their Level 1 rockets. Lesson topics are:
 \begin{enumerate}
 \item Fundamentals of rocketry and simulation using OpenRocket software.
 \item CAD with Solidworks.
 \item Composite tube manufacturing.
 \item Waterjet and machine shop for fin fabrication.
 \item Intro to Avionics.
-\item Launch operations, motor assembly, and recovery.
+\item Launch operations, safety, motor assembly, and recovery.
 \end{enumerate}
+
+The Rocket Team will also extend our educational activities beyond current MIT students by teaching a class for Splash, a Science, Technology, Engineering,and Mathematics (STEM) education outreach program for local high school students.
+
 \section*{Student Involvement}
-The Rocket Team attracted strong interest from students at the Fall Activities Midway this year, recording $121$ interested students, $46$ of whom listed Course 16 as their current or intended major. We have translated this interest into participation in team activities. Thirty to $35$ students have attended each of the first two lessons in the Level 1 Certification Rocket project, and 17 attended the first planning meeting for the design of the Pyralis liquid rocket engine. Of the active students, $10$ are AeroAstro undergraduates, $3$ are AeroAstro graduate students, $2$ are CME students studying AeroAstro, and about $10$ are first year students intending to major in AeroAstro. The remainder are involved with other Courses, mostly 2, 6, and 12.
+The Rocket Team attracted strong interest from students at the Fall Activities Midway this year, recording $121$ interested students, $46$ of whom listed Course 16 as their current or intended major. We have translated this interest into participation in team activities. Thirty-two students are actively involved with the team. Of the active students, $11$ are AeroAstro undergraduates, $3$ are AeroAstro graduate students, $2$ are CME students studying AeroAstro, and $7$ are first year students intending to major in AeroAstro. The remainder are involved with other Courses, mostly $2$ (Mechanical Engineering), $6$ (Electrical Engineering and Computer Science), and $8$ (Physics).\\
+
 \section*{Schedule}
 During September and October, the majority of the team's energy will be focused on educating new members through the construction of Level 1 Certification rockets. However, a few senior members of the team will continue to advance the design of the Pyralis rocket engine. In late October the team will shift focus to the Pyralis project, and during November a low-temperature prototype of the engine will be built. The milestone for the end of Fall semester will be a room-temperature gas flow test of the low-temperature prototype.\\
 
 During IAP, the data gathered from the low-temperature prototype will guide a redesign of the engine. Also, the team will finalize the design, manufacture, and test of the high-temperature components and cooling system of the engine. The milestone for the end of IAP will be an assembled engine capable of withstanding a high-temperature combustion process. \\
 
 During February, the team will organize the safety and logistics procedures needed to perform a static firing test of the engine. During March and April, the team will perform several static firings of the engine, each one informing improvements to the design, until a successful test is achieved.
+\begin{figure}[H]
+\centering
+\includegraphics[width = \textwidth]{fall_gantt.png}
+\caption{A Gantt chart showing the team's planned operations for Fall 2013} 
+\label{fall_gantt}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width = \textwidth]{spring_gantt.png}
+\caption{A Gantt chart showing the team's planned operations for IAP and Spring 2014} 
+\label{spring_gantt}
+\end{figure}
 
 \section*{Finance}
 \subsection*{Past Year's Finances and Activities}
@@ -94,6 +110,32 @@ NASA SMD Grant for USLI & $5,000.00$\\
 \hline
 Total & $13,000.00$\\
 \end{tabular}
+
+In the 2010-2011 school year, the Rocket Team developed a rocket-deployed UAV for NASA's University Student Launch Initiative (USLI) and a ground station to command and receive telemetry from the UAV in flight. The Team budgeted $20,045.56$ USD of expenditures for the year, allocated as follows:\\
+\begin{tabular}{r | l}
+Category & Cost \\
+\hline
+Rocket & $2,740.63$\\
+UAV & $1,585.03$\\
+Ground Station & $5,459.90$\\
+Testing Equipment & $2,000.00$\\
+Spare Parts & $4,000.00$\\
+Team Support and Travel & $4,260.00$\\
+\hline
+Total & $20,045.56$\\
+\end{tabular}
+
+The Team requested funding from the follow sources:\\
+\begin{tabular}{r | l}
+Funding Source & Amount \\
+\hline
+MIT AeroAstro Department & $7,000.00$\\
+Edgerton Center & $5,000.00$\\
+Rocket Team Savings & $8,000.00$\\
+\hline
+Total & $20,000.00$\\
+\end{tabular}
+
 \subsection*{Current Financial Position}
 The Rocket Team currently has an account balance of $266.93$ USD with the Student Activities Office.
 \subsection*{Improvements to Record-Keeping}
@@ -101,34 +143,35 @@ The Rocket Team treasurer is implementing needed improvements to the Team's reco
 \begin{itemize}
 \item Establishing a central electronic database in which funding proposals, budgets, inventory records, and project reports from previous years will be stored.
 \item Switching from the Student Activities Office financial system to the Edgerton Center financial system.
-\item Conducting an extensive inventory of equipment in the Rocket Team's lab and evaluating the use of 5S practices to organize the Rocket Team's lab space.
+\item Conducting an extensive inventory of equipment in the Rocket Team's lab.
 \end{itemize}
 \subsection*{Expected Expenses for 2013-2014}
 Accounting for the prices of the components in our preliminary design, we expect the costs to be as follows:\\
 \begin{tabular}{r | c | c || l}
-Objective & Estimated Cost & Safety Factor & Safe Cost \\
+Objective & Estimated Cost & Margin & Margined Cost \\
 \hline
 Engine and tanks & $1,103.65$ & 4 & $4,414.60$ \\
 Propellant & $500.00$ & 1.5 & $750.00$ \\
 Static test stand & $1,000.00$ & 1.5 & $1,500.00$ \\
 L1 Certification Rockets & $1,791.00$ & 1.5 & $2,686.50$ \\
+Lab Improvements & $1,000.00$ & 1.5 & $1,500.00$ \\
 \hline
- & & Total Costs & $9,351.10$ \\
+ & & Total Costs & $10,851.1$ \\
 \end{tabular}
 
-Each cost is multiplied by a safety factor which indicates the level of uncertainty associated with that cost.
+Each cost is multiplied by a margin factor which indicates the level of uncertainty associated with that cost.
 \subsection*{Expected Revenue for 2013-2014}
 We plan to request funding from the following sources:\\
 
 \begin{tabular}{r|c|l}
 Source & Amount & Status \\
 \hline
-Massachusetts Space Grant & $2,800.00$ & Applied, awaiting response \\
-MIT AeroAstro Department & $8,000.00$ & Application in process \\
-Gordon Engineering Leadership Program & & Not yet applied \\
+Massachusetts Space Grant & ($60 \%$ of travel expenses) & Applied, awaiting response \\
+MIT AeroAstro Department & $8,000.00$ & Granted \\
+Gordon Engineering Leadership Program & $4,000.00$ & Application in progress \\
 Edgerton Center &  & Not yet applied \\
 \hline
-Total funding requested & $10,800.00$ & \\
+Total funding requested & $12,00.00$ & \\
 \end{tabular}
 
 The Team plans to fund this year's operations with contributions from the AeroAstro Department and the MA Space Grant. However, if these sources are unable to provide sufficient funding, the Team will approach other on-campus funding sources such as the GEL Program and the Edgerton Center. Finally, the Team may pursue corporate sponsors, but this is not anticipated to be necessary. In the event that the Team raises more money than needed to cover this year's expenses, the extra funds will be used for the continued development and flight of the Pyralis engine during the 2014-2015 academic year. 
