@@ -26,21 +26,21 @@ dsim.state.ddy =0
 dsim.state.t = 0
 
 # Vehicle mass and drag
-dsim.vehicle.m_struct = 6
-dsim.vehicle.A = 50 * 0.01**2
-dsim.vehicle.Cd = 0.76
+dsim.vehicle.m_struct = 14.4
+dsim.vehicle.A = 195 * 0.01**2
+dsim.vehicle.Cd = 0.45
 
 #Enigne
 esim = ESim()
 esim.engine.Isp_opt = 333.1
-esim.engine.dry_mass = 4.0
+esim.engine.dry_mass = 3.0
 esim.engine.At = 0.00005890
 esim.engine.er = 12.0
 esim.engine.m_dot_choke = 0.2188
 esim.engine.Pc = 4.4e6
 esim.engine.Pe = 43379.96
 # Propellant load
-esim.state.prop_mass = 1.7
+esim.state.prop_mass = 2.0
 
 y = []
 Ta = []
