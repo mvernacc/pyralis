@@ -1,0 +1,41 @@
+% PRESSURE DROP THROUGH A CYLINDRICAL PIPE WITH STEADY FLOW
+% Primary Contributor: Lachlan Jardine
+% Secondary Contributor: James Logan
+
+clear all; close all;
+
+relativeRoughness = input('Please Enter Relative Roughness Value [e/d]: ');
+nu = input('Please Enter Kinematic Viscosity [Pa*s]: ');
+d = input('Please Enter Diameter of the Pipe [m]: ');
+L = input('Please Enter Length of the Pipe [m]: ');
+mdot = input('Please Enter Mass Flow In Pipe [kg/s]: ');
+rho = input('Please Enter Density of Fluid [kg/m^3]: ');
+heading = input('Please Enter Pipe Material: ', 's');
+deltap = [];
+
+for d = 0.005:0.001:0.04
+
+area = pi * (d/2)^2;
+v = mdot / (rho*area);
+
+myfun = @(f,Re) f - 0.25*(1/(log10(relativeRoughness/3.7 + 2.51/(Re*sqrt(f))))^2); % Colebrook Formula
+Re = v*d/nu;        %Reynolds Number
+
+%fprime = 0.316*Re^(-1/4);           %Friction coefficient for very smooth pipes
+
+if Re<(2*10^3)
+    f = 64/Re;
+else
+    fun = @(f) myfun(f,Re);    % function of f alone
+    f = fsolve(fun,0.06,optimset('Display','Off'));
+end
+
+deltap = [deltap, 0.5*rho*v^(2)*(L/d)*f];     %[Pa]
+end
+
+figure
+plot(0.005:0.001:0.04,deltap); 
+xlabel('Pipe Diameter [m]');
+ylabel('Pressure drop per meter [Pa]');
+title( strcat(heading, ' Tubing Pressure Drop (Compressed air)'));
+
