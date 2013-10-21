@@ -5,15 +5,15 @@
 clear all; close all;
 
 relativeRoughness = input('Please Enter Relative Roughness Value [e/d]: ');
-nu = input('Please Enter Kinematic Viscosity [m^2/s]: ');
+nu = input('Please Enter Kinematic Viscosity [Pa*s]: ');
 d = input('Please Enter Diameter of the Pipe [m]: ');
 L = input('Please Enter Length of the Pipe [m]: ');
-mdot = input('Please Enter Mass Flow In Pipe [m^3/s]: ');
+mdot = input('Please Enter Mass Flow In Pipe [kg/s]: ');
 rho = input('Please Enter Density of Fluid [kg/m^3]: ');
 heading = input('Please Enter Pipe Material: ', 's');
 deltap = [];
 
-for d = 0.01:0.001:0.04
+for d = 0.005:0.001:0.04
 
 area = pi * (d/2)^2;
 v = mdot / (rho*area);
@@ -34,7 +34,8 @@ deltap = [deltap, 0.5*rho*v^(2)*(L/d)*f];     %[Pa]
 end
 
 figure
-plot(0.01:0.001:0.04,deltap); 
+plot(0.005:0.001:0.04,deltap); 
 xlabel('Pipe Diameter [m]');
 ylabel('Pressure drop per meter [Pa]');
 title( strcat(heading, ' Tubing Pressure Drop (Compressed air)'));
+
