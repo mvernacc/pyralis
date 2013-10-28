@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in] {geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{float}
+\usepackage{empheq}
+\usepackage{enumerate}
+
+\title{Pyralis Preliminary Design Review} % Title
+\author{Profesor Lozano\\Matt Vernacchia\\James Logan\\Connie Liu\\Kevin Sabo\\Eric Peters\\Ben Corbin }
+\date{ \today } % Date for the report
+
+%----------------------------------------------------------------------------------------
+% THE BODY OF THE REPORT
+%---------------------------------------------------------------------------------------
+
+\begin{document}
+\maketitle
+
+\section*{Main Feedback \& Concerns}
+
+\begin{itemize}
+\item Threaded tungsten rod
+\item Ceramic for aerospike nozzle
+\item \textbf{More thermodynamics analysis needed for rod \& ceramic spike}
+\item Sensors \& equipment for cold flow test
+\item Aerospike's condition after impact
+\end{itemize}
+
+\section{Tungsten Rod}
+Professor Lozano wanted to make sure that the tungsten rod is necessary to the aerospike design. We need to do the math and thermodynamics analysis to check the thermal expansion of tungsten so there's no risk of the rod stretching axially and pushing the ceramic spike down to clog the throat area. Similarly, we need to check there's no risk of the rod stretching radially and possibly cracking the surrounding ceramic.
+
+\section{Ceramic Spike}
+\textbf{This is probably the most important section that we need to focus on for next steps.} We need to know/figure out the actual ceramic material that we will be using to machine our aerospike nozzle. The main properties it needs to have include having a low thermal conductivity (thermally insulating), able to withstand temperatures and pressures of the combustion chamber, and ideally machinable (although we could cast the spike if need be). Also, before we do too much research on ceramics, let's make sure that we are going to use some sort of ceramic for our spike (not metal alloys, carbides, etc).\\
+
+\noindent Similar to the additional thermodynamics analysis needed for the tungsten rod, we need to perform the same thermal expansion analysis for the ceramic spike. Namely, will the ceramic expand? If it does, will it clog the throat? Along the same lines, we need to do more research on how the throat area affects our thrust - linearly? Exponentially? What is our tolerance for how much our throat area can expand or contract before our thrust and predictions are severely affected?
+
+\section{Cold Flow Equipment}
+Keep Prof. Lozano updated about possibly using the equipment (tanks, regulator, valves) left behind from Talaris, especially if we need to convince anyone to let us borrow the equipment.
+
+\section{Landing after Flight}
+This is something that we don't need to actively think about for a while but something good to think about now. How are we going to land the rocket after the drogue parachutes deploy? We would really prefer that it not come down on the spike. Extending the fins to take all the impact? Deployable landing legs?
+
+\end{document}
